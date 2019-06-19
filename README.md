@@ -1,6 +1,12 @@
 # WebMediaViewer
 webpage's media file list viewer with csharp sharpdevlop
 
+[ver 0.2]
+html 파서 에러 해결 : HtmlAgilityPack 사용 
+
+-------------------------------------------
+[ver 0.1]
+
 [사용법]
 url 입력
 이미지파일등이 포함되어 있는 태그명 입력, 속성명 입력, 이미지파일등의 확장자 선택

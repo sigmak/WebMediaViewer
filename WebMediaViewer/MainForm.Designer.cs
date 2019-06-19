@@ -61,6 +61,7 @@ namespace webImagesPreview
 			this.button1 = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtUrl = new System.Windows.Forms.TextBox();
+			this.cbUrlPath = new System.Windows.Forms.CheckBox();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -70,34 +71,34 @@ namespace webImagesPreview
 			this.listBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.listBox1.FormattingEnabled = true;
 			this.listBox1.ItemHeight = 12;
-			this.listBox1.Location = new System.Drawing.Point(18, 164);
+			this.listBox1.Location = new System.Drawing.Point(18, 296);
 			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(245, 448);
+			this.listBox1.Size = new System.Drawing.Size(245, 316);
 			this.listBox1.TabIndex = 19;
 			this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1SelectedIndexChanged);
 			// 
 			// webBrowser1
 			// 
 			this.webBrowser1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.webBrowser1.Location = new System.Drawing.Point(274, 164);
+			this.webBrowser1.Location = new System.Drawing.Point(274, 296);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
-			this.webBrowser1.Size = new System.Drawing.Size(654, 444);
+			this.webBrowser1.Size = new System.Drawing.Size(654, 312);
 			this.webBrowser1.TabIndex = 20;
 			// 
 			// txtContent
 			// 
 			this.txtContent.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.txtContent.Enabled = false;
 			this.txtContent.Location = new System.Drawing.Point(18, 116);
 			this.txtContent.Multiline = true;
 			this.txtContent.Name = "txtContent";
-			this.txtContent.Size = new System.Drawing.Size(912, 42);
+			this.txtContent.Size = new System.Drawing.Size(912, 159);
 			this.txtContent.TabIndex = 21;
 			// 
 			// groupBox2
 			// 
 			this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.groupBox2.Controls.Add(this.cbUrlPath);
 			this.groupBox2.Controls.Add(this.groupBox1);
 			this.groupBox2.Controls.Add(this.txtSattr);
 			this.groupBox2.Controls.Add(this.txtStag);
@@ -218,6 +219,15 @@ namespace webImagesPreview
 			this.txtUrl.Size = new System.Drawing.Size(787, 21);
 			this.txtUrl.TabIndex = 18;
 			// 
+			// cbUrlPath
+			// 
+			this.cbUrlPath.Location = new System.Drawing.Point(666, 53);
+			this.cbUrlPath.Name = "cbUrlPath";
+			this.cbUrlPath.Size = new System.Drawing.Size(228, 29);
+			this.cbUrlPath.TabIndex = 36;
+			this.cbUrlPath.Text = "위의url 과 상관없는 풀 이미지파일명";
+			this.cbUrlPath.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -235,6 +245,7 @@ namespace webImagesPreview
 			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 		private System.Windows.Forms.RadioButton rbPng;
 		private System.Windows.Forms.GroupBox groupBox2;
@@ -243,5 +254,6 @@ namespace webImagesPreview
 		private System.Windows.Forms.RadioButton rbMp4;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.WebBrowser webBrowser1;
+		private System.Windows.Forms.CheckBox cbUrlPath;
 	}
 }

@@ -87,8 +87,6 @@ namespace webImagesPreview
             	
             	var my_img_nodes = doc.DocumentNode.SelectNodes(".//"+ txtStag.Text + "/@" + txtSattr.Text  );
             	
-				//참고 : https://codeday.me/ko/qa/20190328/161753.html
-
             	//MessageBox.Show(my_img_nodes.Count + "");
 				foreach(HtmlAgilityPack.HtmlNode node in my_img_nodes)
 	            {
