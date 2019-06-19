@@ -1,6 +1,10 @@
 # WebMediaViewer
 webpage's media file list viewer with csharp sharpdevlop
 
+[ver 0.3]
+url 스크랩 1번만 하고 스크랩 된 결과물만 가지고
+Media 선택해서 파일리스트 추출하도록 디자인 및 코드 변경 함.
+
 [ver 0.2]
 html 파서 에러 해결 : HtmlAgilityPack 사용 
 

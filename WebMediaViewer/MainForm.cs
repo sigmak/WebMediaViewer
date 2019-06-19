@@ -48,10 +48,18 @@ namespace webImagesPreview
 			txtSattr.Text="href";
 			//txtSwords.Text ="jpg";
 			
+			txtContent.ReadOnly=true; //읽기전용으로 
+			
+			
 		}
 
-		void Button1Click(object sender, EventArgs e)
+		
+		
+
+		void BtnScrapClick(object sender, EventArgs e)
 		{
+            txtContent.Text ="";
+
 			//getImgs(txtUrl.Text); //---
 			WebRequest request = WebRequest.Create(txtUrl.Text);
 			request.Credentials = CredentialCache.DefaultCredentials;
@@ -70,19 +78,21 @@ namespace webImagesPreview
 
             dataStream.Close();
             reader.Close();
-            txtContent.Text ="";
             txtContent.Text=responseFromServer;
-            
-            
+		}
+		
+		void BtnMediaExtractClick(object sender, EventArgs e)
+		{
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(txtContent.Text);
 
             listBox1.Items.Clear();
             int CntJpg=0;
             int CntPng=0;
+            int CntBmp=0;
             int CntGif=0;
             int CntMp4=0;
-            
+            string chkMediaStr="";
             try {
             	
             	var my_img_nodes = doc.DocumentNode.SelectNodes(".//"+ txtStag.Text + "/@" + txtSattr.Text  );
@@ -95,22 +105,32 @@ namespace webImagesPreview
 					string attributeValue = node.GetAttributeValue(txtSattr.Text, "");
 					if (attributeValue != "") {
 		                if (rbJpg.Checked==true){ //jpg 이면
-		                    if ((attributeValue).Contains(".jpg")){    
+  							chkMediaStr="jpg,jpeg ";
+							if ((attributeValue.ToLower()).Contains(".jpg") || (attributeValue.ToLower()).Contains(".jpeg") ){
 			                   	listBox1.Items.Add(attributeValue);
 		                        CntJpg++;
 			                }
 	                    }else if (rbPng.Checked==true){ //png 이면
-		                    if ((attributeValue).Contains(".png")){   
+  							chkMediaStr="png ";
+							if ((attributeValue.ToLower()).Contains(".png")){
 			                   	listBox1.Items.Add(attributeValue);
 		                        CntPng++;
 			                }
+	                    }else if (rbBmp.Checked==true){ //bmp 이면
+  							chkMediaStr="bmp ";
+							if ((attributeValue.ToLower()).Contains(".bmp")){
+			                   	listBox1.Items.Add(attributeValue);
+		                        CntBmp++;
+			                }
 	                    }else if (rbGif.Checked==true){ //gif 이면
-		                    if ((attributeValue).Contains(".gif")){   
+  							chkMediaStr="gif ";
+							if ((attributeValue.ToLower()).Contains(".gif")){
 			                   	listBox1.Items.Add(attributeValue);
 		                        CntGif++;
 			                }
 	                    }else if (rbMp4.Checked==true){ //mp4 이면
-		                    if ((attributeValue).Contains(".mp4")){   
+  							chkMediaStr="mp4 ";
+							if ((attributeValue.ToLower()).Contains(".mp4")){
 			                   	listBox1.Items.Add(attributeValue);
 		                        CntMp4++;
 			                }
@@ -122,11 +142,11 @@ namespace webImagesPreview
             	
             }
 
-				
-
-          MessageBox.Show(listBox1.Items.Count.ToString());
-
+          //MessageBox.Show(listBox1.Items.Count.ToString());
+          lblResult.Text = "검색결과 : " + chkMediaStr + "총 파일수 = " + listBox1.Items.Count.ToString(); 
+			
 		}
+		
 		
 		string imgTagStr(int no, string imgFileName){
 			string result= no + "<img src='" + imgFileName + "' width='240' height='180'> &nbsp; &nbsp;";
